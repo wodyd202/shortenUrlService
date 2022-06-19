@@ -4,9 +4,9 @@ import lombok.Getter;
 
 @Getter
 public class CreateShortenUrlDto {
-    private final String realPath;
+    private final String targetUrl;
 
-    public CreateShortenUrlDto(String realPath) {
-        this.realPath = realPath;
+    public CreateShortenUrlDto(String targetUrl) {
+        this.targetUrl = targetUrl;
     }
 }

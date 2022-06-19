@@ -19,7 +19,7 @@ public class RedisShortenUrlRepository implements ShortenUrlRepository {
 
     @Override
     public void save(ShortenUrl shortenUrl) {
-        valueOperations.set(shortenUrl.getPath(), shortenUrl, Duration.ofMinutes(30));
+        valueOperations.set(shortenUrl.getUrl(), shortenUrl, Duration.ofMinutes(30));
     }
 
     @Override

@@ -19,10 +19,10 @@ public class ShortenUrlService {
     private String applicationHost;
 
     public ShortenUrlResource createShortenUrl(CreateShortenUrlDto dto) {
-        String realPath = dto.getRealPath();
+        String targetUrl = dto.getTargetUrl();
         String shortenPath = applicationHost + UUID.randomUUID();
 
-        ShortenUrl shortenUrl = new ShortenUrl(shortenPath, realPath);
+        ShortenUrl shortenUrl = new ShortenUrl(shortenPath, targetUrl);
         shortenUrlRepository.save(shortenUrl);
         return ShortenUrlResource.from(shortenUrl);
     }

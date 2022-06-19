@@ -25,7 +25,7 @@ public class ShortenUrlController {
 
     @PostMapping
     public ShortenUrlResponse createShortenUrl(@Valid @RequestBody CreateShortenUrlRequest request) {
-        CreateShortenUrlDto dto = new CreateShortenUrlDto(request.getRealPath());
+        CreateShortenUrlDto dto = new CreateShortenUrlDto(request.getTargetUrl());
         ShortenUrlResource shortenUrl = shortenUrlService.createShortenUrl(dto);
         return ShortenUrlResponse.created(shortenUrl);
     }

@@ -6,11 +6,11 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public class ShortenUrl {
-    private final String path;
-    private final String realPath;
+    private final String url;
+    private final String targetUrl;
 
     protected ShortenUrl() {
-        path = null;
-        realPath = null;
+        url = null;
+        targetUrl = null;
     }
 }

@@ -2,7 +2,6 @@ package com.ljy.shortenurl.service.application.resource;
 
 import com.ljy.shortenurl.service.model.ShortenUrl;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -13,8 +12,8 @@ public class ShortenUrlResource {
     private final LocalDateTime redirectDate;
 
     private ShortenUrlResource(ShortenUrl shortenUrl) {
-        this.realPath = shortenUrl.getRealPath();
-        this.shortenUrl = shortenUrl.getPath();
+        this.realPath = shortenUrl.getTargetUrl();
+        this.shortenUrl = shortenUrl.getUrl();
         this.redirectDate = LocalDateTime.now();
     }
 
