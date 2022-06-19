@@ -8,4 +8,9 @@ import lombok.RequiredArgsConstructor;
 public class ShortenUrl {
     private final String path;
     private final String realPath;
+
+    protected ShortenUrl() {
+        path = null;
+        realPath = null;
+    }
 }
