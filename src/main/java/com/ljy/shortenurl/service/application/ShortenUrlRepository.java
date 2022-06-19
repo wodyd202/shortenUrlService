@@ -1,10 +1,7 @@
 package com.ljy.shortenurl.service.application;
 
-import com.ljy.shortenurl.service.model.ShortenUrl;
+import com.ljy.shortenurl.service.domain.ShortenUrl;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
-
-public interface ShortenUrlRepository {
-    void save(ShortenUrl shortenUrl);
-    Optional<ShortenUrl> findByShortenUrl(String shortenUrl);
+public interface ShortenUrlRepository extends JpaRepository<ShortenUrl, Long> {
 }

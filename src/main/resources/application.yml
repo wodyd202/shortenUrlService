@@ -5,3 +5,8 @@ spring:
 
 application:
   real-host: http://localhost:8080/
+
+redis:
+  lock:
+    shorten-url:
+      key: "shorten-url-lock:"
