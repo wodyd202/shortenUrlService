@@ -1,5 +1,6 @@
 package com.ljy.shortenurl.service.presentation;
 
+import com.ljy.shortenurl.service.application.exception.ShortenUrlNotFoundException;
 import com.ljy.shortenurl.service.presentation.respose.ShortenUrlResponse;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,8 +14,8 @@ public class ShortenUrlExceptionHandler {
         return ShortenUrlResponse.badRequest(e.getAllErrors().get(0).getDefaultMessage());
     }
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ShortenUrlResponse handle(IllegalArgumentException e) {
-        return ShortenUrlResponse.badRequest(e.getMessage());
+    @ExceptionHandler(ShortenUrlNotFoundException.class)
+    public ShortenUrlResponse handle(ShortenUrlNotFoundException e) {
+        return ShortenUrlResponse.notFound();
     }
 }

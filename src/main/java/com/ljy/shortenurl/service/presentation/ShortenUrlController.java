@@ -18,12 +18,12 @@ public class ShortenUrlController {
     private final ShortenUrlService shortenUrlService;
 
     @GetMapping("{shortenUrl}")
-    public void redirectUrl(@PathVariable String shortenUrl, HttpServletResponse httpServletResponse) throws IOException {
-        String shortenPath = shortenUrlService.getRealPath(shortenUrl).getRealPath();
-        httpServletResponse.sendRedirect(shortenPath);
+    public void redirectUrl(@PathVariable String shortenUrl, HttpServletResponse response) throws IOException {
+        String shortenPath = shortenUrlService.getShortenUrl(shortenUrl).getRealPath();
+        response.sendRedirect(shortenPath);
     }
 
-    @PostMapping("/api/v1/shorten-url")
+    @PostMapping
     public ShortenUrlResponse createShortenUrl(@Valid @RequestBody CreateShortenUrlRequest request) {
         CreateShortenUrlDto dto = new CreateShortenUrlDto(request.getRealPath());
         ShortenUrlResource shortenUrl = shortenUrlService.createShortenUrl(dto);

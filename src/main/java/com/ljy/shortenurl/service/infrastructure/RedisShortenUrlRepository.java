@@ -7,6 +7,7 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Repository;
 
 import java.time.Duration;
+import java.util.Optional;
 
 @Repository
 public class RedisShortenUrlRepository implements ShortenUrlRepository {
@@ -22,7 +23,11 @@ public class RedisShortenUrlRepository implements ShortenUrlRepository {
     }
 
     @Override
-    public ShortenUrl findByShortenUrl(String shortenUrl) {
-        return (ShortenUrl) valueOperations.get(shortenUrl);
+    public Optional<ShortenUrl> findByShortenUrl(String shortenUrl) {
+        Object o = valueOperations.get(shortenUrl);
+        if(o != null) {
+            return Optional.of((ShortenUrl) o);
+        }
+        return Optional.empty();
     }
 }

@@ -1,6 +1,7 @@
 package com.ljy.shortenurl.service.application;
 
 import com.ljy.shortenurl.service.application.dto.CreateShortenUrlDto;
+import com.ljy.shortenurl.service.application.exception.ShortenUrlNotFoundException;
 import com.ljy.shortenurl.service.application.resource.ShortenUrlResource;
 import com.ljy.shortenurl.service.model.ShortenUrl;
 import lombok.RequiredArgsConstructor;
@@ -26,8 +27,9 @@ public class ShortenUrlService {
         return ShortenUrlResource.from(shortenUrl);
     }
 
-    public ShortenUrlResource getRealPath(String shortenPath) {
-        ShortenUrl shortenUrl = shortenUrlRepository.findByShortenUrl(applicationHost + shortenPath);
+    public ShortenUrlResource getShortenUrl(String shortenPath) {
+        ShortenUrl shortenUrl = shortenUrlRepository.findByShortenUrl(applicationHost + shortenPath)
+                .orElseThrow(ShortenUrlNotFoundException::new);
         return ShortenUrlResource.from(shortenUrl);
     }
 }
